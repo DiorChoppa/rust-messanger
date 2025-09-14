@@ -1,3 +1,4 @@
+use std::sync::{Arc, Mutex};
 use stp::server::StpServer;
 
 struct Chat {
@@ -6,17 +7,22 @@ struct Chat {
 fn main() {
     let addr = "127.0.0.1:18080";
     let mut server = StpServer::bind(addr).unwrap();
-    let mut chat = Chat::new();
+    let chat = Arc::new(Mutex::new(Chat::new()));
 
     loop {
         let Ok(mut connection) = server.accept() else {
             println!("failed to accept connection");
-            continue;
+            return;
         };
 
-        if let Err(e) = connection.process_request(|request| process_request_inner(request, &mut chat)) {
-            println!("failed to process chat request: {:?}", e);
-        };
+        let chat = chat.clone();
+        std::thread::spawn(move || {
+            let mut locked = chat.lock().unwrap();
+            if let Err(e) =
+                connection.process_request(|request| process_request_inner(request, &mut locked)) {
+                println!("failed to process chat request: {:?}", e);
+            };
+        });
     }
 }
 
