@@ -2,6 +2,9 @@
 <module type="EMPTY_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/chat_cli/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chat_client/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chat_server/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/stp/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />

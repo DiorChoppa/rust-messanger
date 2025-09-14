@@ -1,0 +1,7 @@
+[package]
+name = "chat_cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+chat_client = { path = "../chat_client" }

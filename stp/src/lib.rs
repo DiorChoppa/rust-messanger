@@ -1,3 +1,6 @@
+pub mod client;
+pub mod server;
+
 use std::{error::Error, io::Write, net::TcpStream};
 use std::io::Read;
 

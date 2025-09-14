@@ -3,8 +3,25 @@
 version = 4
 
 [[package]]
-name = "messanger"
+name = "chat_cli"
 version = "0.1.0"
+dependencies = [
+ "chat_client",
+]
+
+[[package]]
+name = "chat_client"
+version = "0.1.0"
+dependencies = [
+ "stp",
+]
+
+[[package]]
+name = "chat_server"
+version = "0.1.0"
+dependencies = [
+ "stp",
+]
 
 [[package]]
 name = "stp"
